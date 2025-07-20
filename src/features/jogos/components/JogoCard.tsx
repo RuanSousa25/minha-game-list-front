@@ -17,7 +17,7 @@ export default function JogoCard({ jogo }: Props) {
       <span className={styles.notaContainerCard}>
         <StarRatings
           rating={jogo.nota}
-          starRatedColor="#d4d400ff"
+          starRatedColor="#d4d400"
           starDimension="20px"
           starSpacing="5px"
         ></StarRatings>

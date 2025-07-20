@@ -7,4 +7,6 @@
   align-items: start;
   flex-wrap: wrap;
   justify-content: start;
+  gap: 10px;
+  row-gap: 20px;
 }

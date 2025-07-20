@@ -1,0 +1,66 @@
+.jogoCard {
+  width: 270px;
+  height: 21rem;
+  background-color: #f9f9f9;
+  display: grid;
+  grid-template-rows: 3rem 8rem 1.5rem auto 2.5rem;
+  padding: 12px;
+  gap: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+.jogoTituloCard {
+  grid-row: 1;
+  margin: 0;
+  font-weight: bold;
+  color: #333;
+  text-wrap: balance;
+  height: 30%;
+}
+.jogoImagemCard {
+  grid-row: 2;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.notaContainerCard {
+  grid-row: 3;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #444;
+  display: flex;
+  justify-content: start;
+}
+.generosContainerCard {
+  grid-row: 4;
+  height: 20%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.generoChip {
+  background-color: #dedede;
+  padding: 4px 10px;
+  height: 15px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  color: #333;
+}
+.buttonsCard {
+  grid-row: 5;
+  display: flex;
+  justify-content: space-around;
+}
+.buttonCard {
+  background-color: #2fd72f;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 16px;
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s ease;
+}
+.buttonCard:hover {
+  background-color: #27b327;
+}

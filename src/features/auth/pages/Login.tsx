@@ -2,6 +2,7 @@ import { useState } from "react";
 import styles from "../styles/Login.module.css";
 import { login } from "../services/authService";
 import { useAuth } from "../context/AuthContext";
+import { Link } from "react-router-dom";
 
 export default function Login() {
   const [usuario, setUsuario] = useState("");
@@ -26,11 +27,11 @@ export default function Login() {
   return (
     <div className={styles.container}>
       <form className={styles.form} onSubmit={HandleSubmit}>
-        <h2>Login</h2>
+        <h2>Entrar</h2>
         {erro && <p className={styles.error}>{erro}</p>}
         <input
           type="text"
-          placeholder="login"
+          placeholder="usuario"
           value={usuario}
           onChange={(e) => setUsuario(e.target.value)}
         ></input>

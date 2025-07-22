@@ -2,7 +2,6 @@ import { useState } from "react";
 import styles from "../styles/Login.module.css";
 import { login } from "../services/authService";
 import { useAuth } from "../context/AuthContext";
-import { Link } from "react-router-dom";
 
 export default function Login() {
   const [usuario, setUsuario] = useState("");

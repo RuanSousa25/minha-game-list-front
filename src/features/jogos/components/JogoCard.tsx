@@ -11,7 +11,7 @@ export default function JogoCard({ jogo }: Props) {
     <div className={styles.jogoCard}>
       <h2 className={styles.jogoTituloCard}>{jogo.nome}</h2>
       <JogoImagemCard
-        src={jogo.imagens[0]}
+        src={jogo.imagenCapa}
         alt={"imagem de capa do jogo " + jogo.nome}
       />
       <span className={styles.notaContainerCard}>

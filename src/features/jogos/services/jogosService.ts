@@ -7,3 +7,7 @@ export async function listJogos(): Promise<Page<Jogo>> {
   console.log(res);
   return res.data;
 }
+export async function getJogo(id: number): Promise<Jogo> {
+  const res = await api.get(`jogos/${id}`);
+  return res.data;
+}

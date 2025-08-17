@@ -4,6 +4,6 @@ export interface Jogo {
   nota: number;
   avaliacoesCount: number;
   generos: string[];
-  imagenCapa: string;
-  imagenIcon: string;
+  imagemCapa: string;
+  imagemIcon: string;
 }

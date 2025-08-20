@@ -1,9 +1,18 @@
-import type { Avaliacao } from "../types";
-
+import type { Page } from "../../../shared/types";
+import type { AvaliacaoType } from "../types";
+import Avaliacao from "./Avaliacao";
 type AvaliacoesListProps = {
-  avaliacoes: Avaliacao[];
+  avaliacoesPage: Page<AvaliacaoType>;
 };
 
-export default function AvaliacoesList({ avaliacoes }: AvaliacoesListProps) {
-  return <div></div>;
+export default function AvaliacoesList({
+  avaliacoesPage,
+}: AvaliacoesListProps) {
+  return (
+    <div>
+      {avaliacoesPage.items.map((a) => (
+        <Avaliacao avaliacao={a}></Avaliacao>
+      ))}
+    </div>
+  );
 }

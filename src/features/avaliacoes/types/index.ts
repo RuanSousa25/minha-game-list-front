@@ -1,8 +1,10 @@
-export interface Avaliacao {
+export interface AvaliacaoType {
   id: number;
   usuarioId: number;
+  usuarioLogin: string;
   jogoId: number;
+  jogoNome: string;
   nota: number;
   opiniao: string;
-  data: Date;
+  data: string;
 }

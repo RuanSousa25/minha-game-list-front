@@ -1,0 +1,49 @@
+.avaliacoesJogoContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  flex-grow: 1;
+}
+.jogoContainer {
+  width: 100%;
+  background-color: #ececec;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.jogoContainerContent {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  min-width: 360px;
+  box-sizing: border-box;
+  padding: 10px;
+}
+.jogoTitulo {
+  width: 100%;
+}
+.jogoCapaContainer {
+  width: 50%;
+  min-width: 350px;
+}
+.jogoCapa {
+  width: 100%;
+  height: auto;
+}
+.jogoInfos {
+  box-sizing: border-box;
+  width: 50%;
+  padding: 30px 50px;
+  min-width: 350px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  gap: 20px;
+}

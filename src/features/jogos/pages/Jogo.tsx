@@ -1,5 +1,6 @@
+import styles from "../styles/Jogo.module.css";
 import { useEffect, useState } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getJogo } from "../services/jogosService";
 import type { Jogo } from "../types";
 import type { Page } from "../../../shared/types";
@@ -36,17 +37,25 @@ export default function JogoPage() {
     setAvaliacoesPage(res);
   };
   return (
-    <div>
-      <div>
-        <h2>{jogo?.nome}</h2>
-        <img src={jogo?.imagemCapa} />
-        <div>
-          <StarRatings
-            rating={jogo?.nota}
-            starRatedColor="#d4d400"
-            starDimension="35px"
-            starSpacing="5px"
-          ></StarRatings>
+    <div className={styles.avaliacoesJogoContainer}>
+      <div className={styles.jogoContainer}>
+        <div className={styles.jogoContainerContent}>
+          <h2 className={styles.jogoTitulo}>{jogo?.nome}</h2>
+          <div className={styles.jogoCapaContainer}>
+            <img className={styles.jogoCapa} src={jogo?.imagemCapa} />
+          </div>
+          <div className={styles.jogoInfos}>
+            <p>
+              Esse jogo recebeu {avaliacoesPage.totalItems} avaliações no total
+              e tem uma nota média de {jogo?.nota}.
+            </p>
+            <StarRatings
+              rating={jogo?.nota}
+              starRatedColor="#d4d400"
+              starDimension="35px"
+              starSpacing="5px"
+            ></StarRatings>
+          </div>
         </div>
       </div>
       <AvaliacoesList avaliacoesPage={avaliacoesPage}></AvaliacoesList>

@@ -1,0 +1,9 @@
+.avaliacoesListContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 5px 15px;
+  margin: 10px 0px;
+  min-width: 350px;
+}

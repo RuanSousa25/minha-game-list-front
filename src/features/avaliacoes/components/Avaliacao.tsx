@@ -1,3 +1,4 @@
+import styles from "../styles/Avaliacao.module.css";
 import StarRatings from "react-star-ratings";
 import type { AvaliacaoType } from "../types";
 
@@ -14,8 +15,8 @@ export default function Avaliacao({ avaliacao }: AvaliacaoProp) {
   });
 
   return (
-    <div>
-      <p>{avaliacao.usuarioLogin}</p>
+    <div className={styles.avaliacaoContainer}>
+      <p className={styles.avaliacaoUsuarioLogin}>{avaliacao.usuarioLogin}</p>
       <StarRatings
         rating={avaliacao.nota}
         starRatedColor="#d4d400"
@@ -23,7 +24,7 @@ export default function Avaliacao({ avaliacao }: AvaliacaoProp) {
         starSpacing="5px"
       ></StarRatings>
       <p>{avaliacao.opiniao}</p>
-      <p>{formatado}</p>
+      <p className={styles.avaliacaoDataCriacao}>Escrita em: {formatado}</p>
     </div>
   );
 }

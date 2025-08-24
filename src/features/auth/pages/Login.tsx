@@ -2,13 +2,15 @@ import { useState } from "react";
 import styles from "../styles/Login.module.css";
 import { login } from "../services/authService";
 import { useAuth } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
   const [usuario, setUsuario] = useState("");
   const [senha, setSenha] = useState("");
   const [erro, setErro] = useState("");
   //const navigate = useNavigate();
-  const { dispatch } = useAuth();
+  const { dispatch, state } = useAuth();
+  const navigate = useNavigate();
 
   const HandleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -18,6 +20,7 @@ export default function Login() {
       const token = res.accessToken;
       console.log(token);
       dispatch({ type: "LOGIN", token });
+      navigate("/");
     } catch (err) {
       setErro((err as Error).message);
     }

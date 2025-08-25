@@ -1,7 +1,6 @@
 import { NavLink } from "react-router-dom";
 import styles from "../styles/Header.module.css";
 import { useAuth } from "../../features/auth/context/AuthContext";
-import { useEffect } from "react";
 
 export default function Header() {
   const { dispatch, state } = useAuth();
@@ -9,9 +8,10 @@ export default function Header() {
   const logout = () => {
     dispatch({ type: "LOGOUT" });
   };
-  useEffect(() => {
-    console.log(state);
-  }, [state]);
+
+  const isAdminOrMod =
+    state.user?.role == "admin" || state.user?.role == "moderador";
+
   return (
     <header className={styles.header}>
       <h2>Minha Game List</h2>
@@ -19,9 +19,14 @@ export default function Header() {
         <NavLink to="/" className={styles.navlink}>
           Home
         </NavLink>
-        {(state.user?.role == "admin" || state.user?.role == "moderador") && (
+        {isAdminOrMod && (
           <NavLink to="/" className={styles.navlink}>
             Sugestôes
+          </NavLink>
+        )}
+        {state.isAuthenticated && (
+          <NavLink to="/" className={styles.navlink}>
+            Perfil
           </NavLink>
         )}
         {!state.isAuthenticated ? (

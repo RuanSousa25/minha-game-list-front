@@ -51,7 +51,7 @@ function authReducer(state: AuthState, action: AuthAction): AuthState {
       return {
         isAuthenticated: true,
         token: action.token,
-        user: jwtDecode(action.token),
+        user: decodeUser(action.token),
       };
     case "LOGOUT":
       localStorage.removeItem("token");

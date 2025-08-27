@@ -8,3 +8,8 @@ export interface AvaliacaoType {
   opiniao: string;
   data: string;
 }
+export interface AvaliacaoForm {
+  jogoId: number;
+  nota: number;
+  opiniao: string;
+}

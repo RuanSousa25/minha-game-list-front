@@ -1,6 +1,6 @@
 import api from "../../../shared/services/Api";
 import type { Page } from "../../../shared/types";
-import type { AvaliacaoType } from "../types";
+import type { AvaliacaoForm, AvaliacaoType } from "../types";
 
 export async function ListAvaliacoesByJogoId(
   jogoId: number,
@@ -16,5 +16,13 @@ export async function ListAvaliacoesByUsuarioId(
 ): Promise<Page<AvaliacaoType>> {
   const res = await api.get(`avaliacoes/usuario/${usuarioId}?page=${page}`);
   console.log(res);
+  return res.data;
+}
+export async function PostAvaliacao(form: AvaliacaoForm) {
+  const res = await api.post(`avaliacoes/jogo`, form, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
   return res.data;
 }

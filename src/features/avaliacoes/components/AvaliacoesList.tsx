@@ -25,7 +25,7 @@ export default function AvaliacoesList({ jogoId }: AvaliacoesListProps) {
 
   useEffect(() => {
     fetchAvaliacoes();
-  }, []);
+  }, [currentPage]);
   return (
     <div className={styles.avaliacoesListContainer}>
       {avaliacoesPage.items.map((a) => (

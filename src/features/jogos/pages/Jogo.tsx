@@ -1,13 +1,14 @@
 import styles from "../styles/Jogo.module.css";
 import globalStyles from "../../../shared/styles/GlobalStyle.module.css";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { getJogo } from "../services/jogosService";
 import type { Jogo } from "../types";
 import AvaliacoesList from "../../avaliacoes/components/AvaliacoesList";
 import StarRatings from "react-star-ratings";
 
 export default function JogoPage() {
+  const navigate = useNavigate();
   const { jogoId } = useParams() as { jogoId: string };
   const [jogo, setJogo] = useState<Jogo>();
 
@@ -40,7 +41,12 @@ export default function JogoPage() {
                 starSpacing="5px"
               ></StarRatings>
             </div>
-            <button className={globalStyles.button}>Avaliar</button>
+            <button
+              className={globalStyles.button}
+              onClick={() => navigate("avaliar")}
+            >
+              Avaliar
+            </button>
           </div>
         </div>
       </div>

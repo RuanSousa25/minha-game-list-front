@@ -8,3 +8,10 @@ export async function login(
   const res = await api.post("auth/login", { login, senha });
   return res.data;
 }
+export async function register(
+  login: string,
+  senha: string
+): Promise<LoginResponse> {
+  const res = await api.post("auth/register", { login, senha });
+  return res.data;
+}

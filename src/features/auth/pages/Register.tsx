@@ -1,26 +1,21 @@
 import { useState } from "react";
 import styles from "../styles/Login.module.css";
-import { login } from "../services/authService";
-import { useAuth } from "../context/AuthContext";
+import { register } from "../services/authService";
 import { useNavigate } from "react-router-dom";
 
-export default function Login() {
+export default function Register() {
   const [usuario, setUsuario] = useState("");
   const [senha, setSenha] = useState("");
   const [erro, setErro] = useState("");
-  //const navigate = useNavigate();
-  const { dispatch, state } = useAuth();
   const navigate = useNavigate();
 
   const HandleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     try {
-      const res = await login(usuario, senha);
-      const token = res.accessToken;
-      console.log(token);
-      dispatch({ type: "LOGIN", token });
-      navigate("/");
+      const res = await register(usuario, senha);
+      console.log(res);
+      navigate("/login");
     } catch (err) {
       setErro((err as Error).message);
     }
@@ -29,7 +24,7 @@ export default function Login() {
   return (
     <div className={styles.container}>
       <form className={styles.form} onSubmit={HandleSubmit}>
-        <h2>Entrar</h2>
+        <h2>Registrar</h2>
         {erro && <p className={styles.error}>{erro}</p>}
         <input
           type="text"
@@ -43,7 +38,7 @@ export default function Login() {
           value={senha}
           onChange={(e) => setSenha(e.target.value)}
         ></input>
-        <button type="submit">Entrar</button>
+        <button type="submit">Registrar</button>
       </form>
     </div>
   );

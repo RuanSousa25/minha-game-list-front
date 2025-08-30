@@ -30,9 +30,14 @@ export default function Header() {
           </NavLink>
         )}
         {!state.isAuthenticated ? (
-          <NavLink to="/login" className={styles.navlink}>
-            Login
-          </NavLink>
+          <>
+            <NavLink to="/login" className={styles.navlink}>
+              Login
+            </NavLink>
+            <NavLink to="/registrar" className={styles.navlink}>
+              Registrar
+            </NavLink>
+          </>
         ) : (
           <NavLink to={"/"} onClick={logout} className={styles.navlink}>
             Logout

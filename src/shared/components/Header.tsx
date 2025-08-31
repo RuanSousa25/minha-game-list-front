@@ -25,7 +25,7 @@ export default function Header() {
           </NavLink>
         )}
         {state.isAuthenticated && (
-          <NavLink to="/" className={styles.navlink}>
+          <NavLink to="/perfil" className={styles.navlink}>
             Perfil
           </NavLink>
         )}

@@ -24,9 +24,11 @@ function decodeUser(jwtToken: string): User | null {
   try {
     const decoded = jwtDecode<DotNetToken>(jwtToken);
     return {
-      id: decoded["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"],
-      name: decoded[
+      id: decoded[
         "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier"
+      ],
+      name: decoded[
+        "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"
       ],
       role: decoded[
         "http://schemas.microsoft.com/ws/2008/06/identity/claims/role"

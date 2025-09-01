@@ -1,0 +1,17 @@
+.profileContainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+.profileInfos {
+  width: 100%;
+  background-color: #ececec;
+  padding: 20px;
+  box-sizing: border-box;
+}
+.profileInfos span {
+  display: flex;
+  gap: 20px;
+}
+.profileAvaliacoes {
+  width: 50%;
+}

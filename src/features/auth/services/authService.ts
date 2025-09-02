@@ -15,3 +15,8 @@ export async function register(
   const res = await api.post("auth/register", { login, senha });
   return res.data;
 }
+export async function getUserById(userId: number) {
+  const res = await api.get(`auth/user/${userId}`);
+  console.log(res);
+  return res.data;
+}

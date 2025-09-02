@@ -1,12 +1,14 @@
 import styles from "../styles/Avaliacao.module.css";
 import StarRatings from "react-star-ratings";
 import type { AvaliacaoType } from "../types";
+import { useNavigate } from "react-router-dom";
 
 type UserAvaliacaoProp = {
   avaliacao: AvaliacaoType;
 };
 
 export default function UserAvaliacao({ avaliacao }: UserAvaliacaoProp) {
+  const navigate = useNavigate();
   const date = new Date(avaliacao.data);
   const formatado = date.toLocaleDateString("pt-BR", {
     day: "2-digit",
@@ -16,7 +18,12 @@ export default function UserAvaliacao({ avaliacao }: UserAvaliacaoProp) {
 
   return (
     <div className={styles.avaliacaoContainer}>
-      <p className={styles.avaliacaoUsuarioLogin}>{avaliacao.jogoNome}</p>
+      <p
+        className={styles.avaliacaoUsuarioLogin}
+        onClick={() => navigate(`/jogo/${avaliacao.jogoId}`)}
+      >
+        {avaliacao.jogoNome}
+      </p>
       <StarRatings
         rating={avaliacao.nota}
         starRatedColor="#d4d400"

@@ -1,4 +1,5 @@
 import { jwtDecode } from "jwt-decode";
+import type { User } from "../types";
 import React, {
   createContext,
   useContext,
@@ -6,12 +7,6 @@ import React, {
   type ReactNode,
 } from "react";
 import type { DotNetToken } from "../types";
-
-type User = {
-  id: string;
-  name: string;
-  role: string;
-};
 
 type AuthState = {
   isAuthenticated: boolean;
@@ -27,9 +22,8 @@ function decodeUser(jwtToken: string): User | null {
       id: decoded[
         "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier"
       ],
-      name: decoded[
-        "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"
-      ],
+      login:
+        decoded["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"],
       role: decoded[
         "http://schemas.microsoft.com/ws/2008/06/identity/claims/role"
       ],

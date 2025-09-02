@@ -1,6 +1,8 @@
 .profileContainer {
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
+  flex: 1;
 }
 .profileInfos {
   width: 100%;
@@ -13,5 +15,8 @@
   gap: 20px;
 }
 .profileAvaliacoes {
-  width: 50%;
+  display: flex;
+  flex: 1;
+  width: 100%;
+  box-sizing: border-box;
 }

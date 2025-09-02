@@ -7,7 +7,6 @@ export async function ListAvaliacoesByJogoId(
   page: number
 ): Promise<Page<AvaliacaoType>> {
   const res = await api.get(`avaliacoes/jogo/${jogoId}?page=${page}`);
-  console.log(res);
   return res.data;
 }
 export async function ListAvaliacoesByUsuarioId(
@@ -15,7 +14,6 @@ export async function ListAvaliacoesByUsuarioId(
   page: number
 ): Promise<Page<AvaliacaoType>> {
   const res = await api.get(`avaliacoes/usuario/${usuarioId}?page=${page}`);
-  console.log(res);
   return res.data;
 }
 export async function PostAvaliacao(form: AvaliacaoForm) {

@@ -6,6 +6,12 @@
 }
 .avaliacaoUsuarioLogin {
   font-weight: 500;
+  transition: 0.2s ease-in-out;
+  cursor: pointer;
+  text-decoration: dashed;
+}
+.avaliacaoUsuarioLogin:hover {
+  color: #4a4a4a;
 }
 .avaliacaoDataCriacao {
   color: #4a4a4a;

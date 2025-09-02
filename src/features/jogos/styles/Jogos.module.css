@@ -1,7 +1,7 @@
 .jogosContainer {
   display: flex;
   box-sizing: border-box;
-  height: 100vh;
+  flex: 1;
 }
 .jogosPaging {
   width: 100%;
@@ -9,4 +9,5 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  gap: 20px;
 }

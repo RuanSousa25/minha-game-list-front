@@ -12,7 +12,7 @@ export default function AppRouter() {
       <Route path="/" element={<Jogos />} />
       <Route path="/login" element={<Login />} />
       <Route path="/registrar" element={<Register />} />
-      <Route path="/perfil" element={<Profile />} />
+      <Route path="/perfil/:userId" element={<Profile />} />
       <Route path="/jogo/:jogoId" element={<JogoPage />} />
       <Route path="/jogo/:jogoId/avaliar" element={<AvaliarPage />} />
     </Routes>

@@ -4,6 +4,7 @@ import type { Jogo } from "../types";
 import JogoCard from "../components/JogoCard";
 import styles from "../styles/Jogos.module.css";
 import type { Page } from "../../../shared/types";
+import Paging from "../../../shared/components/Paging";
 
 export default function Jogos() {
   const [jogosPaged, setJogosPaged] = useState<Page<Jogo>>({
@@ -14,19 +15,22 @@ export default function Jogos() {
     totalPages: 1,
   });
   useEffect(() => {
-    getJogos();
+    getJogos(1);
   }, []);
 
-  const getJogos = async () => {
-    const res = await listJogos();
+  const getJogos = async (pageNumber: number) => {
+    const res = await listJogos(pageNumber);
     setJogosPaged(res);
   };
 
   return (
     <div className={styles.jogosContainer}>
-      {jogosPaged.items.map((jogo) => (
-        <JogoCard jogo={jogo}></JogoCard>
-      ))}
+      <Paging
+        className={styles.jogosPaging}
+        page={jogosPaged}
+        onPageChange={getJogos}
+        renderItem={(jogo) => <JogoCard jogo={jogo} />}
+      />
     </div>
   );
 }

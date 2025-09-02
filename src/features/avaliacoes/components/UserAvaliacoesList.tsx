@@ -8,6 +8,7 @@ import {
   ListAvaliacoesByUsuarioId,
 } from "../services/avaliacoesService";
 import UserAvaliacao from "./UserAvaliacao";
+import Paging from "../../../shared/components/Paging";
 type UserAvaliacoesListProps = {
   userId: number;
 };
@@ -22,21 +23,25 @@ export default function UserAvaliacoesList({
     totalItems: 1,
     totalPages: 1,
   });
-  const [currentPage, setCurrentPage] = useState<number>(1);
 
-  const fetchAvaliacoes = async () => {
-    const res = await ListAvaliacoesByUsuarioId(Number(userId), currentPage);
+  const fetchAvaliacoes = async (pageNumber: number) => {
+    const res = await ListAvaliacoesByUsuarioId(Number(userId), pageNumber);
     setAvaliacoesPage(res);
   };
 
   useEffect(() => {
-    fetchAvaliacoes();
-  }, [currentPage]);
+    fetchAvaliacoes(1);
+  }, [userId]);
   return (
     <div className={styles.avaliacoesListContainer}>
-      {avaliacoesPage.items.map((a) => (
-        <UserAvaliacao avaliacao={a}></UserAvaliacao>
-      ))}
+      <Paging
+        className={styles.avaliacoesPaging}
+        page={avaliacoesPage}
+        renderItem={(avaliacao) => (
+          <UserAvaliacao avaliacao={avaliacao}></UserAvaliacao>
+        )}
+        onPageChange={fetchAvaliacoes}
+      />
     </div>
   );
 }

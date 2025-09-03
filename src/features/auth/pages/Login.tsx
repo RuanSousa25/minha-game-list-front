@@ -3,11 +3,12 @@ import styles from "../styles/Login.module.css";
 import { login } from "../services/authService";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import ErrorToast from "../../../shared/components/ErrorToast";
 
 export default function Login() {
   const [usuario, setUsuario] = useState("");
   const [senha, setSenha] = useState("");
-  const [erro, setErro] = useState("");
+  const [error, setError] = useState<string | null>(null);
   //const navigate = useNavigate();
   const { dispatch, state } = useAuth();
   const navigate = useNavigate();
@@ -22,7 +23,7 @@ export default function Login() {
       dispatch({ type: "LOGIN", token });
       navigate("/");
     } catch (err) {
-      setErro((err as Error).message);
+      setError((err as Error).message);
     }
   };
 
@@ -30,7 +31,6 @@ export default function Login() {
     <div className={styles.container}>
       <form className={styles.form} onSubmit={HandleSubmit}>
         <h2>Entrar</h2>
-        {erro && <p className={styles.error}>{erro}</p>}
         <input
           type="text"
           placeholder="usuario"
@@ -45,6 +45,7 @@ export default function Login() {
         ></input>
         <button type="submit">Entrar</button>
       </form>
+      {error && <ErrorToast message={error} onClose={() => setError(null)} />}
     </div>
   );
 }

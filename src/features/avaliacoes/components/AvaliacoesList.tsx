@@ -14,7 +14,7 @@ export default function AvaliacoesList({ jogoId }: AvaliacoesListProps) {
     items: [],
     page: 1,
     pageSize: 10,
-    totalItems: 1,
+    totalItems: 0,
     totalPages: 1,
   });
 

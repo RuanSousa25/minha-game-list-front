@@ -2,11 +2,12 @@ import { useState } from "react";
 import styles from "../styles/Login.module.css";
 import { register } from "../services/authService";
 import { useNavigate } from "react-router-dom";
+import ErrorToast from "../../../shared/components/ErrorToast";
 
 export default function Register() {
   const [usuario, setUsuario] = useState("");
   const [senha, setSenha] = useState("");
-  const [erro, setErro] = useState("");
+  const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
 
   const HandleSubmit = async (e: React.FormEvent) => {
@@ -17,7 +18,7 @@ export default function Register() {
       console.log(res);
       navigate("/login");
     } catch (err) {
-      setErro((err as Error).message);
+      setError((err as Error).message);
     }
   };
 
@@ -25,7 +26,7 @@ export default function Register() {
     <div className={styles.container}>
       <form className={styles.form} onSubmit={HandleSubmit}>
         <h2>Registrar</h2>
-        {erro && <p className={styles.error}>{erro}</p>}
+        {error && <ErrorToast message={error} onClose={() => setError(null)} />}
         <input
           type="text"
           placeholder="usuario"

@@ -11,16 +11,12 @@ export default function JogoPage() {
   const navigate = useNavigate();
   const { jogoId } = useParams() as { jogoId: string };
   const [jogo, setJogo] = useState<Jogo>();
-
   useEffect(() => {
     fetchJogo();
   }, [jogoId]);
 
   const fetchJogo = async () => {
-    console.log(jogoId);
-    console.log(Number(jogoId));
     const res = await getJogo(Number(jogoId));
-    console.log(res);
     setJogo(res);
   };
 

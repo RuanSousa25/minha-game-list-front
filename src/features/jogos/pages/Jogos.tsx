@@ -7,6 +7,7 @@ import type { Page } from "../../../shared/types";
 import Paging from "../../../shared/components/Paging";
 
 export default function Jogos() {
+  const [loading, setLoading] = useState<boolean>(false);
   const [jogosPaged, setJogosPaged] = useState<Page<Jogo>>({
     items: [],
     page: 1,
@@ -19,18 +20,23 @@ export default function Jogos() {
   }, []);
 
   const getJogos = async (pageNumber: number) => {
+    setLoading(true);
     const res = await listJogos(pageNumber);
     setJogosPaged(res);
+    setLoading(false);
   };
 
   return (
     <div className={styles.jogosContainer}>
-      <Paging
-        className={styles.jogosPaging}
-        page={jogosPaged}
-        onPageChange={getJogos}
-        renderItem={(jogo) => <JogoCard jogo={jogo} />}
-      />
+      {loading && <p>Carregando...</p>}
+      {loading || (
+        <Paging
+          className={styles.jogosPaging}
+          page={jogosPaged}
+          onPageChange={getJogos}
+          renderItem={(jogo) => <JogoCard jogo={jogo} />}
+        />
+      )}
     </div>
   );
 }

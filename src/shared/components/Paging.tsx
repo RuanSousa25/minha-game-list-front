@@ -6,13 +6,15 @@ import type { ReactNode } from "react";
 interface PagingProps<T> {
   className?: string;
   page: Page<T>;
+  search: string;
   renderItem: (item: T) => ReactNode;
-  onPageChange: (pageNumber: number) => void;
+  onPageChange: (pageNumber: number, search: string) => void;
 }
 
 export default function Paging<T>({
   className,
   page,
+  search,
   renderItem,
   onPageChange,
 }: PagingProps<T>) {
@@ -26,7 +28,7 @@ export default function Paging<T>({
       <div className={styles.pagingController}>
         <button
           disabled={page.page <= 1}
-          onClick={() => onPageChange(page.page - 1)}
+          onClick={() => onPageChange(page.page - 1, search)}
         >
           Anterior
         </button>
@@ -37,7 +39,7 @@ export default function Paging<T>({
 
         <button
           disabled={page.page >= page.totalPages}
-          onClick={() => onPageChange(page.page + 1)}
+          onClick={() => onPageChange(page.page + 1, search)}
         >
           Próxima
         </button>

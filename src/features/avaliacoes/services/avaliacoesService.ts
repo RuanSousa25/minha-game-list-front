@@ -11,9 +11,12 @@ export async function ListAvaliacoesByJogoId(
 }
 export async function ListAvaliacoesByUsuarioId(
   usuarioId: number,
-  page: number
+  page: number,
+  search: string
 ): Promise<Page<AvaliacaoType>> {
-  const res = await api.get(`avaliacoes/usuario/${usuarioId}?page=${page}`);
+  const res = await api.get(
+    `avaliacoes/usuario/${usuarioId}?page=${page}&search=${search}`
+  );
   return res.data;
 }
 export async function PostAvaliacao(form: AvaliacaoForm) {

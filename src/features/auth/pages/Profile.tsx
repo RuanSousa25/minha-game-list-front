@@ -26,13 +26,17 @@ export default function Profile() {
     const res = await getUserById(Number(userId));
     setUser(res);
   };
-  const fetchAvaliacoes = async (pageNumber: number) => {
-    const res = await ListAvaliacoesByUsuarioId(Number(userId), pageNumber);
+  const fetchAvaliacoes = async (pageNumber: number, search: string) => {
+    const res = await ListAvaliacoesByUsuarioId(
+      Number(userId),
+      pageNumber,
+      search
+    );
     setAvaliacoesPage(res);
   };
 
   useEffect(() => {
-    fetchAvaliacoes(1);
+    fetchAvaliacoes(1, "");
     fetchUser();
   }, [userId]);
 

@@ -55,6 +55,7 @@ export default function Jogos() {
           page={jogosPaged}
           onPageChange={setPage}
           renderItem={(jogo) => <JogoCard jogo={jogo} />}
+          search={""}
         />
       )}
     </div>

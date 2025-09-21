@@ -9,12 +9,21 @@ import type { Page } from "../../../shared/types";
 import type { AvaliacaoType } from "../../avaliacoes/types";
 import type { User } from "../types";
 import { getUserById } from "../services/authService";
+import { listSugestoesByUsuarioId } from "../../sugestoes/services/sugestoesService";
+import type { SugestaoJogo } from "../../sugestoes/types";
 
 export default function Profile() {
   const authState = useAuth();
   const { userId } = useParams() as { userId: string };
   const [user, setUser] = useState<User>();
   const [avaliacoesPage, setAvaliacoesPage] = useState<Page<AvaliacaoType>>({
+    items: [],
+    page: 1,
+    pageSize: 10,
+    totalItems: 0,
+    totalPages: 1,
+  });
+  const [sugestoesPage, setSugestoesPage] = useState<Page<SugestaoJogo>>({
     items: [],
     page: 1,
     pageSize: 10,
@@ -34,9 +43,23 @@ export default function Profile() {
     );
     setAvaliacoesPage(res);
   };
+  const fetchSugestoes = async (
+    pageNumber: number,
+    search: string,
+    usuarioId: string
+  ) => {
+    const res = await listSugestoesByUsuarioId(
+      Number(usuarioId),
+      pageNumber,
+      search
+    );
+    console.log(res);
+    setSugestoesPage(res);
+  };
 
   useEffect(() => {
     fetchAvaliacoes(1, "");
+    fetchSugestoes(1, "", userId);
     fetchUser();
   }, [userId]);
 
@@ -51,7 +74,10 @@ export default function Profile() {
             cardText="Avaliações"
             cardValue={avaliacoesPage.totalItems}
           />
-          <ProfileCard cardText="Sugestões" cardValue={0} />
+          <ProfileCard
+            cardText="Sugestões"
+            cardValue={sugestoesPage.totalItems}
+          />
         </span>
       </div>
       <div className={styles.profileAvaliacoes}>

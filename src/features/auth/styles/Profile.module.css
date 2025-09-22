@@ -13,6 +13,7 @@
 .profileInfos span {
   display: flex;
   gap: 20px;
+  margin: 10px 0px;
 }
 .profileAvaliacoes {
   display: flex;

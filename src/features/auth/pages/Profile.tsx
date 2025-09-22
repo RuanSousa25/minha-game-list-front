@@ -1,4 +1,5 @@
 import styles from "../styles/Profile.module.css";
+import globalStyles from "../../../shared/styles/GlobalStyle.module.css";
 import UserAvaliacoesList from "../../avaliacoes/components/UserAvaliacoesList";
 import { useAuth } from "../context/AuthContext";
 import ProfileCard from "../components/ProfileCard";
@@ -16,6 +17,7 @@ export default function Profile() {
   const authState = useAuth();
   const { userId } = useParams() as { userId: string };
   const [user, setUser] = useState<User>();
+  const [toggleAvaliacoes, setToggleAvaliacoes] = useState(true);
   const [avaliacoesPage, setAvaliacoesPage] = useState<Page<AvaliacaoType>>({
     items: [],
     page: 1,
@@ -79,12 +81,30 @@ export default function Profile() {
             cardValue={sugestoesPage.totalItems}
           />
         </span>
+        <span>
+          <button
+            className={globalStyles.button2}
+            onClick={() => setToggleAvaliacoes(true)}
+          >
+            Ver Avalições
+          </button>
+          <button
+            className={globalStyles.button2}
+            onClick={() => setToggleAvaliacoes(false)}
+          >
+            Ver Sugestões
+          </button>
+        </span>
       </div>
       <div className={styles.profileAvaliacoes}>
-        <UserAvaliacoesList
-          onPageChange={fetchAvaliacoes}
-          page={avaliacoesPage}
-        />
+        {toggleAvaliacoes ? (
+          <UserAvaliacoesList
+            onPageChange={fetchAvaliacoes}
+            page={avaliacoesPage}
+          />
+        ) : (
+          <></>
+        )}
       </div>
     </div>
   );

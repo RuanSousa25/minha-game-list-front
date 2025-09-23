@@ -35,6 +35,7 @@ export default function AvaliacoesList({ jogoId }: AvaliacoesListProps) {
         renderItem={(avaliacao) => (
           <Avaliacao avaliacao={avaliacao}></Avaliacao>
         )}
+        search={""}
       />
     </div>
   );

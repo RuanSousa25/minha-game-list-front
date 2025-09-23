@@ -10,6 +10,7 @@ type UserAvaliacaoProp = {
 export default function UserAvaliacao({ avaliacao }: UserAvaliacaoProp) {
   const navigate = useNavigate();
   const date = new Date(avaliacao.data);
+  console.log(avaliacao.data);
   const formatado = date.toLocaleDateString("pt-BR", {
     day: "2-digit",
     month: "2-digit",

@@ -1,0 +1,19 @@
+.sugestaoaoContainer {
+  width: 100%;
+  background-color: #ececec;
+  padding: 10px;
+  box-sizing: border-box;
+}
+.sugestaoTitulo {
+  font-weight: 500;
+  transition: 0.2s ease-in-out;
+  cursor: pointer;
+  text-decoration: dashed;
+}
+.sugestaoTitulo:hover {
+  color: #4a4a4a;
+}
+.sugestaoDataCriacao {
+  color: #4a4a4a;
+  font-size: 13px;
+}

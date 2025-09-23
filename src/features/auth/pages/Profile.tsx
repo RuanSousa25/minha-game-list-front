@@ -12,6 +12,7 @@ import type { User } from "../types";
 import { getUserById } from "../services/authService";
 import { listSugestoesByUsuarioId } from "../../sugestoes/services/sugestoesService";
 import type { SugestaoJogo } from "../../sugestoes/types";
+import UserSugestoesList from "../../sugestoes/components/UserSugestoesList";
 
 export default function Profile() {
   const authState = useAuth();
@@ -45,13 +46,9 @@ export default function Profile() {
     );
     setAvaliacoesPage(res);
   };
-  const fetchSugestoes = async (
-    pageNumber: number,
-    search: string,
-    usuarioId: string
-  ) => {
+  const fetchSugestoes = async (pageNumber: number, search: string) => {
     const res = await listSugestoesByUsuarioId(
-      Number(usuarioId),
+      Number(userId),
       pageNumber,
       search
     );
@@ -61,7 +58,7 @@ export default function Profile() {
 
   useEffect(() => {
     fetchAvaliacoes(1, "");
-    fetchSugestoes(1, "", userId);
+    fetchSugestoes(1, "");
     fetchUser();
   }, [userId]);
 
@@ -103,7 +100,10 @@ export default function Profile() {
             page={avaliacoesPage}
           />
         ) : (
-          <></>
+          <UserSugestoesList
+            onPageChange={fetchSugestoes}
+            page={sugestoesPage}
+          />
         )}
       </div>
     </div>

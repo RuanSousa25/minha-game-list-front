@@ -15,15 +15,26 @@ export default function UserSugestao({ sugestao: sugestao }: UserSugestaoProp) {
     year: "2-digit",
   });
 
+  console.log(sugestao);
   return (
     <div className={styles.sugestaoaoContainer}>
-      <p
-        className={styles.sugestaoTitulo}
-        onClick={() => navigate(`/jogo/${sugestao.jogoAprovadoId}`)}
-      >
-        {sugestao.nome}
-      </p>
-      <p>{sugestao.generos.join(", ")}</p>
+      <div className={styles.jogoApresentação}>
+        <img src={sugestao.imagemIcone}></img>
+        <p
+          className={styles.sugestaoTitulo}
+          onClick={() => navigate(`/jogo/${sugestao.jogoAprovadoId}`)}
+        >
+          {sugestao.nome}
+        </p>
+      </div>
+      <div className={styles.jogoGeneros}>
+        {sugestao.generos.map((s) => (
+          <span className={styles.generoChip}>
+            <p>{s}</p>
+          </span>
+        ))}
+      </div>
+
       <p className={styles.sugestaoDataCriacao}>Escrita em: {formatado}</p>
     </div>
   );

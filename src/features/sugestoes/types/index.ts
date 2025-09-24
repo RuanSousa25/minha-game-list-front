@@ -5,7 +5,7 @@ export interface SugestaoJogo {
   nome: string;
   generos: string[];
   imagemCapa: string;
-  imagemIcon: string;
+  imagemIcone: string;
   dataSugestao: string;
   aprovado: boolean;
 }

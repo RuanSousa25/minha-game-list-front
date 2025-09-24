@@ -4,6 +4,17 @@
   padding: 10px;
   box-sizing: border-box;
 }
+.jogoApresentação {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin: 10px 0px;
+}
+.jogoApresentação img {
+  width: 50px;
+  height: 50px;
+  background-size: contain;
+}
 .sugestaoTitulo {
   font-weight: 500;
   transition: 0.2s ease-in-out;
@@ -16,4 +27,16 @@
 .sugestaoDataCriacao {
   color: #4a4a4a;
   font-size: 13px;
+}
+.jogoGeneros {
+  display: flex;
+  gap: 5px;
+}
+.generoChip {
+  background-color: #fafafa;
+  padding: 4px 15px;
+  border-radius: 10px;
+}
+.generoChip p {
+  margin: 0;
 }
